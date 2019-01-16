@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { graphql } from "gatsby";
-import { Row, Col, List } from 'antd';
+import { graphql, Link } from "gatsby";
+import { Row, Col, List, Button, Icon } from 'antd';
 
 class Article extends Component {
     render() {
@@ -10,6 +10,16 @@ class Article extends Component {
             <div className="article-page">
                 <Row type="flex" justify="center" align="middle">
                     <Col span={10}>
+                        <Row className="navigator">
+                            <Col>
+                                <Link to="../">
+                                    <Button type="dashed">
+                                        <Icon type="left" />
+                                        Back
+                                    </Button>
+                                </Link>
+                            </Col>
+                        </Row>
                         <Row className="title">
                             <Col>
                                 <h2>{title}</h2>
