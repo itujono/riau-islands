@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import { Button, Card, Avatar, Row, Col } from 'antd'
-
+import "../style/index.less";
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
@@ -15,16 +15,19 @@ const IndexPage = ({ data: { allContentfulArticle: article } }) => (
 		<Row gutter={16}>
 			{ article.edges.map(({ node }) => (
 				<Col span={6}>
-					<Card
-						key={node.id}
-						cover={ <img alt="example" src={node.image ? node.image.file.url : "http://source.unsplash.com/random/"} /> }
-					>
-						<Card.Meta
-							avatar={ <Avatar src={""} /> }
-							title={node.title}
-							description={node.posted}
-						/>
-					</Card>
+					<Link to={`post/${node.slug}`}>
+						<Card
+							hoverable
+							key={node.id}
+							cover={ <img alt="example" src={node.image ? node.image.file.url : "http://source.unsplash.com/random/"} /> }
+						>
+							<Card.Meta
+								avatar={ <Avatar src={""} /> }
+								title={node.title}
+								description={node.createdAt}
+							/>
+						</Card>
+					</Link>
 				</Col>
 			))}
 		</Row>
@@ -43,14 +46,14 @@ export const IndexQuery = graphql`
     allContentfulArticle {
       edges {
         node {
-          id
+		  id
+		  slug
           content {
             id
             content
           }
           title
           author
-          posted(formatString: "DD MMM YYYY")
           image {
             id
             file {
@@ -59,7 +62,7 @@ export const IndexQuery = graphql`
               contentType
             }
           }
-          createdAt
+          createdAt(formatString: "DD MMM YYYY")
         }
       }
     }
