@@ -10,12 +10,12 @@ const Share = ({ pathname, url, title }) => {
     return (
         <List grid={{ gutter: 16, column: 4 }}>
             <List.Item>
-                <Link to={`/${twitter}`}>
+                <Link to={twitter}>
                     <Icon type="twitter" />
                 </Link>
             </List.Item>
             <List.Item>
-                <Link to={`/${fb}`}>
+                <Link to={fb}>
                     <Icon type="facebook" />
                 </Link>
             </List.Item>
