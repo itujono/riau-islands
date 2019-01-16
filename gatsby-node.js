@@ -12,6 +12,7 @@ exports.createPages = ({ graphql, actions }) => {
                         node {
                             id
                             slug
+                            title
                         }
                     }
                 }
@@ -20,12 +21,17 @@ exports.createPages = ({ graphql, actions }) => {
                 if (response.errors) {
                     reject(response.errors)
                 }
-                response.data.allContentfulArticle.edges.forEach(({ node }) => {
+
+                const posts = response.data.allContentfulArticle.edges
+
+                posts.forEach(({ node }, index) => {
                     createPage({
                         path: 'post/' + node.slug,
                         component: articlePage,
                         context: {
-                            slug: node.slug
+                            slug: node.slug,
+                            prev: index === 0 ? null : posts[index - 1],
+                            next: response.length - 1 ? null : posts[index + 1]
                         }
                     })
                 });

@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import { graphql, Link } from "gatsby";
 import { Row, Col, List, Button, Icon } from 'antd';
 
+
+
 class Article extends Component {
     render() {
         const { title, image, content, createdAt, author } = this.props.data.contentfulArticle
+        const { next, prev } = this.props.pageContext
 
         return (
             <div className="article-page">
                 <Row type="flex" justify="center" align="middle">
-                    <Col span={10}>
+                    <Col span={12}>
                         <Row className="navigator">
                             <Col>
                                 <Link to="../">
@@ -38,9 +41,29 @@ class Article extends Component {
                                 <img src={image.file.url} alt={image.file.fileName} />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className="content">
                             <Col>
                                 { content.content }
+                            </Col>
+                        </Row>
+                        <Row type="flex" justify="space-between" className="prev-next">
+                            <Col>
+                                { prev && <div className="prev">
+                                    <strong>Sebelumnya</strong> <br />
+                                    <Link to={'post/' + prev.node.slug}>
+                                        <Icon type="left" /> &nbsp;
+                                        { prev && prev.node.title }
+                                    </Link>
+                                </div> }
+                            </Col>
+                            <Col>
+                                { next && <div className="next">
+                                    <strong>Selanjutnya</strong> <br />
+                                    <Link to={'post/' + next.node.slug}>
+                                        { next && next.node.title } &nbsp;
+                                        <Icon type="right" />
+                                    </Link>
+                                </div> }
                             </Col>
                         </Row>
                     </Col>

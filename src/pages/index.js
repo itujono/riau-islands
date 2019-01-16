@@ -14,7 +14,7 @@ const IndexPage = ({ data: { allContentfulArticle: article } }) => (
 
 		<Row gutter={16}>
 			{ article.edges.map(({ node }) => (
-				<Col span={6}>
+				<Col span={6} key={node.id}>
 					<Link to={`post/${node.slug}`}>
 						<Card
 							hoverable
