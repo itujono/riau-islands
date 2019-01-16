@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
+import Share from "../components/Share";
 import { Row, Col, List, Button, Icon, Divider } from 'antd';
 
 
@@ -53,6 +54,9 @@ class Article extends Component {
                                     <Col>
                                         Ada di tag <br />
                                         { tags.map(tag => <Link to={`tag/${tag}`}>{`#${tag}`} &nbsp; </Link>) }
+                                    </Col>
+                                    <Col>
+                                        <Share pathname={pathname} url='https://riauislands.netlify.com' title={title} />
                                     </Col>
                                 </Row>
                             </Row>
