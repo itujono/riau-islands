@@ -25,7 +25,7 @@ class Contact extends Component {
                             <Row>
                                 <Col>
                                     <Form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-                                        <input type="hidden" name="bot-field" />
+                                        <input type="hidden" name="form-name" value="contact" />
                                         <Form.Item label="Nama kamu" colon={false}>
                                             <Input type="text" name="name" placeholder="Misal: Gunarso Sastra" />
                                         </Form.Item>
