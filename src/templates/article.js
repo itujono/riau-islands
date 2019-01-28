@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Share from "../components/Share";
-import { Row, Col, List, Button, Icon, Divider } from 'antd';
+import { Row, Col, List, Button, Icon, Divider, Tag } from 'antd';
+import Image from '../components/image';
+import { randomColor } from '../lib';
 
 
 
@@ -42,7 +44,7 @@ class Article extends Component {
                             </Row>
                             <Row>
                                 <Col>
-                                    <img src={image.file.url} alt={image.file.fileName} />
+                                    <Image fluid={image.fluid} alt={image.file.fileName} />
                                 </Col>
                             </Row>
                             <Row className="content">
@@ -53,7 +55,7 @@ class Article extends Component {
                                 <Row className="tags">
                                     <Col>
                                         Ada di tag <br />
-                                        { tags.map(tag => <Link to={`tag/${tag}`}>{`#${tag}`} &nbsp; </Link>) }
+                                        { tags.map(tag => <Link to={`tag/${tag}`}><Tag color={randomColor}>{`#${tag}`}</Tag></Link>) }
                                     </Col>
                                     <Col>
                                         <Share pathname={pathname} url='https://riauislands.netlify.com' title={title} />
@@ -99,6 +101,9 @@ export const pageQuery = graphql`
             author
             tags
             image {
+                fluid(maxWidth: 600) {
+                    ...GatsbyContentfulFluid
+                }
                 id
                 file {
                     url

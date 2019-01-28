@@ -19,13 +19,9 @@ const IndexPage = ({ data: { allContentfulArticle: article } }) => (
 						<Card
 							hoverable
 							key={node.id}
-							cover={ <img alt="example" src={node.image ? node.image.file.url : "http://source.unsplash.com/random/"} /> }
+							cover={ <Image fluid={node.image ? node.image.fluid : "http://source.unsplash.com/random/"} /> }
 						>
-							<Card.Meta
-								avatar={ <Avatar src={""} /> }
-								title={node.title}
-								description={node.createdAt}
-							/>
+							<Card.Meta title={node.title} description={node.createdAt} />
 						</Card>
 					</Link>
 				</Col>
@@ -53,8 +49,11 @@ export const IndexQuery = graphql`
             content
           }
           title
-          author
+		  author
           image {
+			fluid(maxWidth: 300) {
+				...GatsbyContentfulFluid
+			}
             id
             file {
               url
