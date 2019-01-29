@@ -52,6 +52,7 @@ class Contact extends Component {
 											<Input
 												type="text"
 												name="name"
+												onChange={this.handleChange}
 												placeholder="Misal: Gunarso Sastra"
 											/>
 										</Form.Item>
@@ -59,6 +60,7 @@ class Contact extends Component {
 											<Input
 												type="email"
 												name="email"
+												onChange={this.handleChange}
 												placeholder="Misal: gunawan@putra.com"
 											/>
 										</Form.Item>
@@ -66,6 +68,7 @@ class Contact extends Component {
 											<Input.TextArea
 												rows={3}
 												name="message"
+												onChange={this.handleChange}
 												placeholder="Apa yang mau kamu curahkan di sini?"
 											/>
 										</Form.Item>
