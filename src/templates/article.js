@@ -4,9 +4,10 @@ import Layout from "../components/layout";
 import Share from "../components/Share";
 import { Row, Col, List, Button, Icon, Divider, Tag } from 'antd';
 import Image from '../components/image';
-import { randomColor } from '../lib';
 
 
+
+const colors = [ 'volcano', 'gold', 'lime', 'green', 'blue', 'purple' ]
 
 class Article extends Component {
     render() {
@@ -54,8 +55,10 @@ class Article extends Component {
                                 <Divider dashed />
                                 <Row className="tags">
                                     <Col>
-                                        Ada di tag <br />
-                                        { tags.map(tag => <Link to={`tag/${tag}`}><Tag color={randomColor}>{`#${tag}`}</Tag></Link>) }
+                                        Ada di tag &nbsp;
+                                        { tags.map((tag, idx) => (
+                                            <Link to={`tag/${tag}`}><Tag color={colors[idx]}>{`#${tag}`}</Tag></Link>
+                                        )) }
                                     </Col>
                                     <Col>
                                         <Share pathname={pathname} url='https://riauislands.netlify.com' title={title} />
