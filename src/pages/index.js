@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Button, Card, Avatar, Row, Col } from 'antd'
+import { Button, Card, Row, Col } from 'antd'
 import "../style/index.less";
 import Layout from '../components/layout'
 import Image from '../components/image'

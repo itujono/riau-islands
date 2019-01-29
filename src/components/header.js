@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Menu, Icon, Row, Col } from 'antd';
+import { Icon, Row, Col } from 'antd';
 
 const Header = ({ siteTitle }) => (
 	<div style={{ background: 'rebeccapurple', marginBottom: '1.45rem', }} >
